@@ -16,7 +16,7 @@ function Home(){
 
                     <CategoryItem itemName="All Products" />
                      { categorylist && categorylist.map((eachcategory)=>{
-                                return <CategoryItem itemName={eachcategory}/>
+                                return <CategoryItem itemName={eachcategory} filter={eachcategory}/>
                      })}
 
                 </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import GetallProducts from "./GetallProducts";
+import GetallProducts from "./useGetallProducts";
 function  GetallCategories(){
    
 

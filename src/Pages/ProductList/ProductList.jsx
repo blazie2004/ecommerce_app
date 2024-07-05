@@ -4,10 +4,17 @@ import './ProductList.css';
 import ProductImage from '../../assets/product.jpg'
 import ProductBox from '../../Components/ProductBox/ProductBox';
 import FilterProducts from '../../Components/FilterProducts/FilterProducts';
-import GetallProducts from '../../hooks/GetallProducts';
+import GetallProducts from '../../hooks/useGetallProducts';
+import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import useGetallProducts from '../../hooks/useGetallProducts';
 
 function ProductList() {
-    const {getallproducts}=GetallProducts();
+
+    const [query,setQuery]=useSearchParams();
+    const {getallproducts}=useGetallProducts(query.get("category"));
+    console.log("enetered productlist cateogyr wise",getallproducts);
+    console.log(query.get("category"));
     
     
    
@@ -23,7 +30,7 @@ function ProductList() {
                     <div className='product-list-box' id='productList'>
 
                        
-                        {getallproducts.map((eachproduct)=>{
+                        { getallproducts && getallproducts.map((eachproduct)=>{
                             return (
                                 <ProductBox key={eachproduct.id}
 
