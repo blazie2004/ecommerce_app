@@ -16,7 +16,7 @@ function Signup() {
                 <Auth onsubmit={async (authargs) => {
                     try {
                         console.log("Submitting signup form with:", authargs);
-                        const response = await axios.post("http://localhost:8765/signup", {
+                        const response = await axios.post("http://localhost:8765/users", {
                             username: authargs.username,
                             email: authargs.email,
                             password: authargs.password
