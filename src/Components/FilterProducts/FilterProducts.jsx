@@ -1,9 +1,36 @@
+import { useEffect, useState } from 'react';
 import './FilterProducts.css';
-
+import axios from 'axios';
+import { useNavigate } from 'react-router';
 function FilterProducts() {
 
     const minPriceOptions = [0, 10, 20, 50, 100, 200];
     const maxPriceOptions = [0, 10, 20, 50, 100, 200, 1000];
+    const [filterproductlist,setfilterproductlist]=useState([]);
+
+    async function download(){
+    const filterproductlist=await axios.get("http://localhost:8765/products/categories").then(response=>{
+        return response.data;
+    });
+    setfilterproductlist(filterproductlist);
+}
+
+    useEffect(()=>{
+        download();
+
+    },[])
+
+
+   
+    const navigator=useNavigate();
+
+    const handleclick =(eachcategory)=>{
+        const url=`/products/?category=${eachcategory}`
+       navigator(url);
+
+       
+    }
+   
 
     return (
         <div className="product-list-sidebar d-flex flex-column">
@@ -17,9 +44,15 @@ function FilterProducts() {
             <div id="categoryList">
             
                 {/* isko api se configure karna hai */}
-                <a className='d-flex text-decoration-none'> Electronics </a>
-                <a className='d-flex text-decoration-none'> KitchenWare </a>
-                <a className='d-flex text-decoration-none'> Medicine </a>
+
+                {filterproductlist && filterproductlist.map((eachcategory)=>{
+                    return (
+                        <a   onClick={()=>{
+                            handleclick(eachcategory);
+                        }}className='d-flex text-decoration-none'> {eachcategory}</a>
+                    )
+                })}
+               
             </div>
 
 

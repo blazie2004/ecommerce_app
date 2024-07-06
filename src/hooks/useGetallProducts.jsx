@@ -7,8 +7,8 @@ function useGetallProducts(category) {
     useEffect(() => {
         async function download() {
             let url = category
-                ? `https://fakestoreapi.com/products/category/${category}`
-                : `https://fakestoreapi.com/products`;
+                ? `http://localhost:8765/products/category/${category}`
+                : `http://localhost:8765/products`;
             try {
                 const response = await axios.get(url);
                 setAllProducts(response.data);

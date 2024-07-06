@@ -42,7 +42,7 @@ function Header(props) {
                 <DropdownItem>Cart</DropdownItem> 
                 <DropdownItem>Settings</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem> <Link to="/signin">Logout</Link></DropdownItem>
+                <DropdownItem> <Link to="/signup">Logout</Link></DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavbarText>Username</NavbarText>

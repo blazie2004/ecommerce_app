@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import GetallProducts from "./useGetallProducts";
+
 function  GetallCategories(){
    
 
     const [categorylist,setcategorylist]=useState(null);
 
     async function download(){
-        const list=await axios.get('https://fakestoreapi.com/products/categories').then(response=>{
+        const list=await axios.get('http://localhost:8765/products/categories').then(response=>{
             return response.data;
         })
         setcategorylist(list);

@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import Auth from '../../Components/Auth/Auth';
 import './Auth.css';
-
+import axios from 'axios';
 function Login() {
     return (
         <div className="container">
@@ -13,7 +13,10 @@ function Login() {
             </div>
             <div className="login-wrapper" id="loginForm">
                 <h4 className="text-center">Login</h4>
-                <Auth />
+                <Auth onsubmit={async (authargs)=>{
+                  
+
+                }}/>
                 <div className="signup-btn text-center" id="showSignupBtn">
                     <Link  to="/signup">
                      Donot have an Account? Sign Up Here

@@ -7,7 +7,7 @@ function GetProductById({id}){
 
     async function download(id){
         try {
-            const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
+            const response = await axios.get(`http://localhost:8765/products/${id}`);
             setProduct(response.data);
         } catch (error) {
             console.error("Error fetching product:", error);
