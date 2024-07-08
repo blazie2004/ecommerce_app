@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Auth from "../../Components/Auth/Auth";
 import './Auth.css';
 import axios from "axios";
 
 function Signup() {
+    const navigator=useNavigate();
+    function navigatefunction(where){
+        navigator(where);
+    }
     return (
         <div className="container">
             <div className="row">
@@ -21,7 +25,8 @@ function Signup() {
                             email: authargs.email,
                             password: authargs.password
                         });
-                        console.log("Response:", response);
+                        navigatefunction("/singin");
+                      
                     } catch (error) {
                         console.error("There was an error signing up!", error);
                         if (error.response) {

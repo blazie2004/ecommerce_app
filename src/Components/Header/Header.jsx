@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Header.css';
 import { Link, useNavigate } from 'react-router-dom';
+// import Cookies from 'js-cookie';
 import {
   Collapse,
   Navbar,
@@ -16,16 +17,32 @@ import {
 
 // CSS import
 import './Header.css';
+import { useCookies } from 'react-cookie';
+import { useEffect } from 'react';
+import UserContext from '../../Context/UserContext';
+import UserCart from '../../Context/UserCart';
 
 function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-  const navigator=useNavigate();
-
+  const [token, setToken, removeToken] = useCookies(['jwt-token']);
+  const {user,setUser}=useContext(UserContext);
+  const {cart,setCart}=useContext(UserCart);
   
 
+  const toggle = () => setIsOpen(!isOpen);
+  // const navigator=useNavigate();
+  useEffect(() => {
+    console.log(token, setToken, removeToken);
+  }, [token,user]);
+
+  console.log(user);
+  
+ 
+
+
+
   return (
+    
     <div>
       <Navbar {...props}>
       <NavbarBrand id="title">
@@ -39,13 +56,21 @@ function Header(props) {
                 Options
               </DropdownToggle>
               <DropdownMenu end>
-                <DropdownItem>Cart</DropdownItem> 
+                <DropdownItem>Cart </DropdownItem> 
                 <DropdownItem>Settings</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem> <Link to="/signup">Logout</Link></DropdownItem>
+                <DropdownItem>
+                 
+                  {token['jwt-token'] ? <Link onClick={() => {
+                    console.log(token);
+                    removeToken('jwt-token');
+                    setUser(null);
+                    setCart(null);
+                  }} to="/signin">Logout</Link> : <Link to="/signin">SignIn</Link>}
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavbarText>Username</NavbarText>
+            {user && <NavbarText>{user.username}</NavbarText>}
           </Nav>
         </Collapse>
       </Navbar>

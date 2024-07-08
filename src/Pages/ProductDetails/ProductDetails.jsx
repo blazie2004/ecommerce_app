@@ -10,7 +10,9 @@ function ProductDetails() {
     if (!product) {
         return <div>Loading...</div>;
     }
-
+    function addtodcart(){
+        
+    }
     return (
         <div className="container">
             <div className="row">
@@ -36,7 +38,7 @@ function ProductDetails() {
                             </div>
                         </div>
 
-                        <div className="product-details-action btn btn-primary text-decoration-none">Add to cart</div>
+                        <div onClick={addtocartfunction}className="product-details-action btn btn-primary text-decoration-none">Add to cart</div>
                         <a href="cart.html" id="goToCartBtn" className="product-details-action btn btn-warning text-decoration-none">
                             Go to cart
                         </a>
