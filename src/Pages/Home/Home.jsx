@@ -6,18 +6,27 @@ import "./Home.css"
 import axios from "axios";
 import UserContext from "../../Context/UserContext";
 import GetcartbyId from "../../hooks/GetcartbyId";
+import UserCart from "../../Context/UserCart";
 function Home(){
     console.log("home");
    
     const {categorylist} =GetallCategories();
-    const {user}=useContext(UserContext);
-    const [cart]=GetcartbyId(user && user.id);
+    const {user,setuser}=useContext(UserContext);
     
+    // console.log(cart);
+    
+
 
 
     useEffect(()=>{
 
-    },[cart]);
+    },[user]);
+    
+   
+    
+
+
+   
     
     return (
         <div className="container">

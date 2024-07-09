@@ -21,7 +21,10 @@ function Login() {
         navigator(where);
     }
     const {cart,setCart}=useContext(UserCart);
+   
+    
     const {user,setUser}=useContext(UserContext);
+    
    
     
 
@@ -46,6 +49,8 @@ function Login() {
                       
                       setUser({username:details.user, id:details.id});
                       setToken('jwt-token', response.data.token);
+                    //   GetcartbyId(details.id)
+                    //   setCart(cart);
                       navigatefunction("/");
                   
 

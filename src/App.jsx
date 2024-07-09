@@ -6,6 +6,7 @@ import MainRoutes from './MainRoutes/MainRoutes';
 import { useState } from 'react';
 import UserContext from './Context/UserContext';
 import UserCart from './Context/UserCart';
+import { useContext } from 'react';
 
 function App() {
   const [user, setUser] = useState(null);

@@ -70,3 +70,6 @@
 .continue-shopping-btn {
     color: white;
 }
+.cart-wrapper{
+    justify-content: space-between;
+}

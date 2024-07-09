@@ -21,12 +21,16 @@ import { useCookies } from 'react-cookie';
 import { useEffect } from 'react';
 import UserContext from '../../Context/UserContext';
 import UserCart from '../../Context/UserCart';
+import GetcartbyId from '../../hooks/GetcartbyId';
 
 function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [token, setToken, removeToken] = useCookies(['jwt-token']);
   const {user,setUser}=useContext(UserContext);
-  const {cart,setCart}=useContext(UserCart);
+  // const {cart,UserCart}=useContext(UserCart);
+  console.log("inside header",user);
+  
+console.log(user);
   
 
   const toggle = () => setIsOpen(!isOpen);
@@ -36,7 +40,7 @@ function Header(props) {
   }, [token,user]);
 
   console.log(user);
-  
+  const url=`cart/${user && user.id}`
  
 
 
@@ -56,7 +60,7 @@ function Header(props) {
                 Options
               </DropdownToggle>
               <DropdownMenu end>
-                <DropdownItem>Cart </DropdownItem> 
+                <DropdownItem><Link to={url}>cart</Link> </DropdownItem> 
                 <DropdownItem>Settings</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
